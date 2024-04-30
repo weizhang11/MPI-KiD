@@ -4,7 +4,7 @@ Parallel run of KiD is enabled at ORNL by Hyun-Gyu Kang.
 
 Steps for using MPI-KiD with CASIM:
 1. Check out CASIM code from Met Office repo
-fcm checkout fcm checkout https://code.metoffice.gov.uk/svn/monc/casim/branches/dev/weizhang/vn1.3_casim_for_kid@11108 casim
+fcm checkout https://code.metoffice.gov.uk/svn/monc/casim/branches/dev/weizhang/vn1.3_casim_for_kid@11108 casim
 (note: version 11108 is default CASIM with UM files needed in KiD. versions with GPU refactoring will be added soon)
 
 2. Put casim/src into MPI-KiD/src
