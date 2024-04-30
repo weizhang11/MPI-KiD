@@ -1,0 +1,22 @@
+#!/bin/sh
+#SBATCH --account=NWP501
+#SBATCH --cluster-constraint=green
+#SBATCH --output=outcray.rpt
+##SBATCH --clusters=fawbush
+##SBATCH --clusters=miller
+#SBATCH --time=02:00:00
+#SBATCH --nodes=1
+##SBATCH --ntasks=8
+#SBATCH --ntasks-per-node=32
+#SBATCH --cpus-per-task=1
+##SBATCH --gpus-per-node=4
+#SBATCH --mail-type=ALL
+#SBATCH --job-name=casim1
+date
+ulimit -s unlimited
+ulimit -v unlimited
+
+
+srun ./bin/KiD_CU_2D.exe namelists/CU_2D.nml output/CU_2D_cray_1.nc
+
+ncdump -v mean_cloud_mass_path ./output/CU_2D_cray_1.nc > cloudmass.txt
