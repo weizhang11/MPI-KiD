@@ -1,1 +1,25 @@
+MPI-enabled Kinemaatic Driver (KiD) for microphsics scheme development, testing and comparisson 
+Originial KiD was developed by Ben Shipway and Adrian Hill at the Met Office: https://appconv.metoffice.gov.uk/kid_a_intercomparison/kid_a/kida_setup.html
+Parallel run of KiD is enabled at ORNL by Hyun-Gyu Kang. 
 
+Steps for using MPI-KiD with CASIM:
+1. Check out CASIM code from Met Office repo
+fcm checkout fcm checkout https://code.metoffice.gov.uk/svn/monc/casim/branches/dev/weizhang/vn1.3_casim_for_kid@11108 casim
+(note: version 11108 is default CASIM with UM files needed in KiD. versions with GPU refactoring will be added soon)
+
+2. Put casim/src into MPI-KiD/src
+cp -r casim/src MPI-KiD/src/casim
+
+3. Modify MPI-KiD/src/compiler_options.inc for compiler options at different platforms
+ifeq ($(VENDOR), YOUR_COMPIER)
+NCINC= ...
+NCLIB= ...
+MPIINC= ...
+MPILIB= ...
+(note: pay attenction to MPI module in -I$(MPILIB) -lXXX too)
+
+4. ./build.sh, execution file will be created in MPI-KiD/bin
+
+5. submit the job. On AF HPC11, use "bsub run-cray.slm"
+
+6. output is saved in output/
