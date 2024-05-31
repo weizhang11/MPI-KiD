@@ -4,8 +4,10 @@ Parallel run of KiD is enabled at ORNL by Hyun-Gyu Kang.
 
 Steps for using MPI-KiD with CASIM:
 1. Check out CASIM code from Met Office repo
+(1) default CASIM with UM files needed in KiD: VERSION 11108
 fcm checkout https://code.metoffice.gov.uk/svn/monc/casim/branches/dev/weizhang/vn1.3_casim_for_kid@11108 casim
-(note: version 11108 is default CASIM with UM files needed in KiD. Versions with GPU refactoring will be added soon)
+(2) Refactored CASIM with OpenACC directives: VERSION 11177
+fcm checkout https://code.metoffice.gov.uk/svn/monc/casim/branches/dev/weizhang/vn1.3_casim_for_kid@11177 casim
 
 2. Put casim/src into MPI-KiD/src
 cp -r casim/src MPI-KiD/src/casim
@@ -18,8 +20,9 @@ MPIINC= ...
 MPILIB= ...
 (note: pay attenction to MPILIB in -I$(MPILIB) -lXXX too)
 
-4. ./build.sh, execution file will be created in MPI-KiD/bin
+4. Specify the compiler as "VENDOR" in .build.sh
+./build.sh, execution file will be created in MPI-KiD/bin
 
-5. submit the job. On AF HPC11, use "bsub run-cray.slm"
+5. submit the job. On AF HPC11, use "bsub run-cray.slm" or "bsub run-gpu.slm"
 
 6. output is saved in output/
