@@ -39,7 +39,26 @@ endif
 
 endif
 #----------------------------------------------------------------------#
+#----------------------------------------------------------------------#
+### nvidia gpu ########################################################
+#----------------------------------------------------------------------#
+ifeq ($(VENDOR),nvidia_gpu)
 
+NCINC=/opt/cray/pe/netcdf/4.9.0.3/NVIDIA/20.7/include
+NCLIB=/opt/cray/pe/netcdf/4.9.0.3/NVIDIA/20.7/lib
+MPIINC=/opt/cray/pe/mpich/8.1.24/ofi/nvidia/20.7/include
+MPILIB=/opt/cray/pe/mpich/8.1.24/ofi/nvidia/20.7/lib
+
+ifeq ($(DEF_DPREC), true)
+FPP = -r8 -Mpreprocess -DPI=pi -mcmodel=medium -acc -ta=tesla:managed -Minfo=accel -Mlarge_arrays  
+#FPP = -r8 -Mpreprocess -DPI=pi -mcmodel=medium -acc=gpu -Minfo=accel -Mlarge_arrays 
+else
+FPP = -Mpreprocess -DPI=pi -mcmodel=medium -acc=gpu -Minfo=accel -Mlarge_array
+endif
+
+endif
+
+#----------------------------------------------------------------------#
 
 #----------------------------------------------------------------------#
 ### gnu (need to configure) ############################################
@@ -63,7 +82,7 @@ OPTS = -O3 -g
 ifdef PCOMPILER
 OPTS+= -DUSE_MPI 
 F90=$(PCOMPILER) $(OPTS) 
-LD=$(F90) # Linker
+LD=$(F90) -acc # Linker
 
 INCDF=-I$(NCINC) -I$(MPIINC)
 ### mpif for SUMMIT
