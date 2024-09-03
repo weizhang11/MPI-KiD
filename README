@@ -6,8 +6,8 @@ Steps for using MPI-KiD with CASIM:
 1. Check out CASIM code from Met Office repo
 (1) default CASIM with UM files needed in KiD: VERSION 11108
 fcm checkout https://code.metoffice.gov.uk/svn/monc/casim/branches/dev/weizhang/vn1.3_casim_for_kid@11108 casim
-(2) Refactored CASIM with OpenACC directives: VERSION 11177
-fcm checkout https://code.metoffice.gov.uk/svn/monc/casim/branches/dev/weizhang/vn1.3_casim_for_kid@11177 casim
+(2) Refactored CASIM with OpenACC directives: VERSION 11391
+fcm checkout https://code.metoffice.gov.uk/svn/monc/casim/branches/dev/weizhang/vn1.3_casim_for_kid@11391 casim
 
 2. Put casim/src into MPI-KiD/src
 cp -r casim/src MPI-KiD/src/casim
