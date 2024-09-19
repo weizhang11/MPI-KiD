@@ -1,6 +1,6 @@
 MPI-enabled Kinematic Driver (KiD) for microphsics scheme development, testing and comparisson 
 Originial KiD was developed by Ben Shipway and Adrian Hill at the Met Office: https://appconv.metoffice.gov.uk/kid_a_intercomparison/kid_a/kida_setup.html
-Parallel run of KiD is enabled at ORNL by Hyun-Gyu Kang. 
+Parallel run of KiD is enabled at ORNL by Hyun-Gyu Kang and Wei Zhang. 
 
 Steps for using MPI-KiD with CASIM:
 1. Check out CASIM code from Met Office repo
